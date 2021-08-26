@@ -18,7 +18,9 @@ const BUSSINESS = gql`
 `;
 
 const Bussiness = () => {
-  const { loading, error, data, refetch } = useQuery(BUSSINESS);
+  const { loading, error, data, refetch } = useQuery(BUSSINESS, {
+    pollInterval: 1000
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -51,7 +53,6 @@ const Bussiness = () => {
       </Table>
     </>
   )
-
 }
 
 const INSERT_BUSSINESS = gql`
@@ -75,7 +76,10 @@ const InputBussiness = ({
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
-  const [addBussiness, { data, loading, error }] = useMutation(INSERT_BUSSINESS, { errorPolicy: 'all' });
+  const [addBussiness, { data, loading, error }] = useMutation(INSERT_BUSSINESS, {
+    errorPolicy: 'all'
+  }
+  );
 
   if (loading) return <>'Submitting...'</>;
   // if (error) return <p>Error :(</p>;
