@@ -15,13 +15,13 @@ export const Main: React.FC = () => {
   const alert = useAlert();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [login, { data, loading, error }] = useMutation(LOGIN, {
-  //   errorPolicy: 'all'
-  // });
-  const { loading, error, data, refetch } = useQuery(LOGIN, {
-    variables: { email: email, password: password },
+  const [login, { data, loading, error }] = useMutation(LOGIN, {
+    errorPolicy: 'all'
   });
-  if (data) {
+  // const { loading, error, data, refetch } = useQuery(LOGIN, {
+  //   variables: { email: email, password: password },
+  // });
+  if (data && data.loginUser) {
     localStorage.setItem("token", data.loginUser.token);
     alert.success("Successfully Login");
     window.location.href = "/";
@@ -48,12 +48,12 @@ export const Main: React.FC = () => {
               type="submit"
               onClick={e => {
                 e.preventDefault();
-                refetch();
-                // login({
-                //   variables: {
-                //     email: email, password: password
-                //   }
-                // });
+                // refetch();
+                login({
+                  variables: {
+                    email: email, password: password
+                  }
+                });
               }}
             >
               Submit

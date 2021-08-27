@@ -14,8 +14,9 @@ const errorLink = onError(({ graphQLErrors, networkError, response, operation })
 });
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/api/graphiql',
-  // uri: 'https://another-massive-boilweevil.gigalixirapp.com',
+  // uri: 'http://localhost:4000/api/graphql',
+  // uri: 'http://localhost:4000/api/graphiql',
+  uri: 'https://another-massive-boilweevil.gigalixirapp.com/api/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
