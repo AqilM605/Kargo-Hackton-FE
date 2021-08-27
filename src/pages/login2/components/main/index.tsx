@@ -74,7 +74,7 @@ export const Main: React.FC = () => {
         {/*    okButton="Delete"*/}
         {/*/>*/}
 
-        <ModalForm footer={true} isShowing={true} size="2xl" title="Profile">
+        <ModalForm footer={true} isShowing={false} size="2xl" title="Profile">
 
           adasdasdasd
 
